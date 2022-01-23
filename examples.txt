@@ -1,0 +1,3 @@
+const dbName = 'TourOfHeroes'; // Переменная в которой хранится имя базы данных, если такой нету, то она создаётся, если же есть, то коллекция записывается в неё.
+const col = client.db(dbName).collection('heroes'); //создаём новую коллекцию в нашей бд TourOfHeroes
+const MongoClient = require('mongodb').MongoClient; //подключаем монгоДб
