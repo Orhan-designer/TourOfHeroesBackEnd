@@ -26,7 +26,7 @@ MongoClient.connect(url, (err, client) => {
 
 //Our main page greetings
 app.get("/", (req, res) => {
-  res.send("Hello from Server");
+  res.send("You are located at localhost: " + PORT);
 });
 
 app.get("/api/heroes", (req, res) => {
@@ -42,14 +42,14 @@ app.get("/api/heroes", (req, res) => {
 
 app.get("/api/heroes/:id", (req, res) => {
 
-    const id = req.params.id
-    console.log(id)
+    const id = +req.params.id
     const collection = req.app.locals.collection;
 
-    collection.findOne({_id: id}, (err, hero) => {  
-        if(err) return console.log(err);
+    collection.findOne({id: id}, (err, hero) => {  
+        if (err) return console.log(err);
         res.send(hero);
     });
+
 });
 
 app.post("/api/heroes", jsonParser, (req, res) => {
